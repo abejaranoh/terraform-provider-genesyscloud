@@ -176,7 +176,7 @@ func readKnowledgeLabel(ctx context.Context, d *schema.ResourceData, meta interf
 
 	sdkConfig := meta.(*provider.ProviderMeta).ClientConfig
 	knowledgeAPI := platformclientv2.NewKnowledgeApiWithConfig(sdkConfig)
-	cc := consistency_checker.NewConsistencyCheck(ctx, d, meta, ResourceKnowledgeLabel(), constants.DefaultConsistencyChecks, "genesyscloud_knowledge_label")
+	cc := consistency_checker.NewConsistencyCheck(ctx, d, meta, ResourceKnowledgeLabel(), constants.ConsistencyChecks(), "genesyscloud_knowledge_label")
 
 	log.Printf("Reading knowledge label %s", knowledgeLabelId)
 	return util.WithRetriesForRead(ctx, d, func() *retry.RetryError {
